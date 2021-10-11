@@ -10,8 +10,8 @@
     <title>게시판 목록</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bulma.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
+    <link rel="stylesheet" href="/resources/css/bulma.css">
+    <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
@@ -138,16 +138,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>5</td>
-                            <td>
-                                <a href="<c:out value="/board/detail"/>">첫 게시글입니다.</a>
-                                <span class="tag is-info is-light ml-2">NEW</span>
-                            </td>
-                            <td class="has-text-weight-bold has-text-grey">관리자</td>
-                            <td>2021. 09. 28</td>
-                            <td>0</td>
-                        </tr>
+                        <c:forEach var="board" items="${boardList }">
+	                        <tr>
+	                            <td><c:out value="${board.bno }" /></td>
+	                            <td>
+	                                <a href="<c:out value="/board/detail"/>">
+	                                	<c:out value="${board.title }"/>
+	                                </a>
+	                                <span class="tag is-info is-light ml-2">NEW</span>
+	                            </td>
+	                            <td class="has-text-weight-bold has-text-grey">
+	                            	<c:out value="${board.content }" />
+	                            </td>
+	                            <td>2021. 09. 28</td>
+	                            <td>0</td>
+	                        </tr>                        
+                        </c:forEach>
                         </tbody>
                     </table>
                     <!-- //table -->
